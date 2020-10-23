@@ -38,6 +38,13 @@ public class FoodController {
         return new ResponseEntity<>(foodService.readAll(), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/update")
-    public
+    @PutMapping(value = "/update/{foodId}")
+    public ResponseEntity<FoodType> update(@PathVariable Long foodId, @RequestBody FoodType foodType ){
+        return new ResponseEntity<FoodType>(foodService.update(foodType, foodId), HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "/delete/{foodId}")
+    public ResponseEntity<FoodType> delete(@PathVariable Long foodId){
+        return new ResponseEntity<FoodType>(foodService.delete(foodId), HttpStatus.OK);
+    }
 }
